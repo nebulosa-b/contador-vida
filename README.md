@@ -7,7 +7,7 @@ Una herramienta minimalista que representa tu vida en semanas, inspirada en el c
 
 ## Demo
 
-🔗 [Ver en vivo](#) <!-- Añade la URL de Vercel aquí -->
+🔗 [Ver en vivo](https://contador-vida-nebulosab.vercel.app/)
 
 ## Cómo funciona
 
