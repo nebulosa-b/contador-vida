@@ -9,7 +9,7 @@
 
     body {
       background: #0a0a0a;
-      color: #e8e8e8;
+      color: #f0ece4;
       font-family: Georgia, 'Times New Roman', serif;
       min-height: 100vh;
       display: flex;
@@ -23,35 +23,39 @@
     #setup {
       text-align: center;
       max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     #setup h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: normal;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-      color: #e8e8e8;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+      color: #f0ece4;
     }
 
     #setup p {
-      font-size: 0.85rem;
-      color: #555;
+      font-size: 0.88rem;
+      color: #888;
       margin-bottom: 2.5rem;
-      line-height: 1.6;
+      line-height: 1.7;
       font-family: system-ui, sans-serif;
     }
 
     #setup input[type="date"] {
-      background: #111;
-      border: 1px solid #2a2a2a;
-      color: #e8e8e8;
-      padding: 0.75rem 1.25rem;
+      background: #141414;
+      border: 1px solid #333;
+      color: #f0ece4;
+      padding: 0.8rem 1.25rem;
       font-size: 1rem;
       border-radius: 6px;
       width: 100%;
       margin-bottom: 1rem;
       font-family: system-ui, sans-serif;
       cursor: pointer;
+      transition: border-color 0.2s;
     }
 
     #setup input[type="date"]:focus {
@@ -63,18 +67,19 @@
       background: #c8a96e;
       color: #0a0a0a;
       border: none;
-      padding: 0.75rem 2.5rem;
+      padding: 0.8rem 2.5rem;
       font-size: 0.9rem;
       border-radius: 6px;
       cursor: pointer;
       font-family: system-ui, sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: background 0.2s;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, transform 0.1s;
       width: 100%;
     }
 
     #setup button:hover { background: #d4b87a; }
+    #setup button:active { transform: scale(0.98); }
 
     /* --- MAIN SCREEN --- */
     #main { display: none; width: 100%; max-width: 960px; }
@@ -83,29 +88,27 @@
     .stats {
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 3.5rem;
       margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
-    .stat {
-      text-align: center;
-    }
+    .stat { text-align: center; }
 
     .stat-value {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: normal;
-      color: #e8e8e8;
+      color: #f0ece4;
       line-height: 1;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
     }
 
     .stat-value.gold { color: #c8a96e; }
 
     .stat-label {
-      font-size: 0.7rem;
-      color: #444;
-      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+      color: #666;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       font-family: system-ui, sans-serif;
     }
@@ -117,12 +120,12 @@
     }
 
     .progress-bar-bg {
-      background: #1a1a1a;
+      background: #1c1c1c;
       border-radius: 2px;
-      height: 3px;
+      height: 2px;
       width: 100%;
       overflow: hidden;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
     .progress-bar-fill {
@@ -133,8 +136,8 @@
     }
 
     .progress-label {
-      font-size: 0.75rem;
-      color: #333;
+      font-size: 0.72rem;
+      color: #555;
       font-family: system-ui, sans-serif;
       letter-spacing: 0.08em;
     }
@@ -153,10 +156,9 @@
       height: 8px;
       border-radius: 1px;
       background: #1e1e1e;
-      transition: background 0.3s;
     }
 
-    .week.lived { background: #e8e8e8; }
+    .week.lived { background: #c8c4bc; }
 
     .week.current {
       background: #c8a96e;
@@ -166,7 +168,7 @@
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.3); }
+      50% { opacity: 0.5; transform: scale(1.4); }
     }
 
     /* Reset button */
@@ -175,22 +177,23 @@
       margin: 0 auto;
       background: none;
       border: none;
-      color: #2a2a2a;
-      font-size: 0.7rem;
+      color: #333;
+      font-size: 0.68rem;
       cursor: pointer;
       font-family: system-ui, sans-serif;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       transition: color 0.2s;
       padding: 0.5rem;
     }
 
-    .reset-btn:hover { color: #555; }
+    .reset-btn:hover { color: #666; }
 
     @media (max-width: 600px) {
-      .week { width: 6px; height: 6px; gap: 2px; }
-      .stats { gap: 1.5rem; }
-      .stat-value { font-size: 1.5rem; }
+      .week { width: 6px; height: 6px; }
+      .grid-container { gap: 2px; }
+      .stats { gap: 2rem; }
+      .stat-value { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -199,7 +202,7 @@
   <!-- Setup -->
   <div id="setup">
     <h1>¿Cuánto te queda?</h1>
-    <p>Introduce tu fecha de nacimiento para ver tu vida representada en semanas.</p>
+    <p>Introduce tu fecha de nacimiento para ver<br>tu vida representada en semanas.</p>
     <input type="date" id="dob-input" />
     <button onclick="start()">Ver mi vida</button>
   </div>
@@ -291,9 +294,13 @@
     function reset() {
       localStorage.removeItem('life-dob');
       document.getElementById('setup').style.display = 'flex';
-      document.getElementById('setup').style.flexDirection = 'column';
       document.getElementById('main').style.display = 'none';
     }
+
+    // Enter key support
+    document.getElementById('dob-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') start();
+    });
 
     // Auto-load if saved
     const saved = localStorage.getItem('life-dob');
